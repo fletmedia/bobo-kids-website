@@ -41,4 +41,53 @@
       target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
     });
   });
+
+  // Scroll reveal with staggered delays
+  var revealEls = document.querySelectorAll('.section h2, .card, .video, .about');
+  revealEls.forEach(function (el) {
+    var sibs = el.parentElement.children;
+    var i = Array.prototype.indexOf.call(sibs, el);
+    el.classList.add('reveal');
+    el.style.setProperty('--d', (el.matches('.card, .video') ? i * 0.12 : 0) + 's');
+  });
+  if (reduce || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('visible');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  // Tap wiggle on cards and videos
+  document.querySelectorAll('.card, .video').forEach(function (el) {
+    el.addEventListener('pointerdown', function () {
+      if (reduce) return;
+      var t = el.querySelector('img, .emoji');
+      if (!t) return;
+      t.classList.remove('wiggle');
+      void t.offsetWidth; // restart animation
+      t.classList.add('wiggle');
+      t.addEventListener('animationend', function () { t.classList.remove('wiggle'); }, { once: true });
+    });
+  });
+
+  // Subtle hero parallax (one rAF-throttled custom property write per frame)
+  var hero = document.querySelector('.hero');
+  if (hero && !reduce) {
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      var y = window.pageYOffset;
+      if (y < hero.offsetHeight + 100) hero.style.setProperty('--py', Math.min(y * 0.25, 45) + 'px');
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+  }
 })();
