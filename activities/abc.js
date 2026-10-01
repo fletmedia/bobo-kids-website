@@ -13,32 +13,64 @@
 
   // ---- Speech (Web Speech API; nothing leaves the device) ----
   var synth = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window ? window.speechSynthesis : null;
-  var muted = false, voice = null;
+  var muted = false, voice = null, speakTimer = 0;
+  var NOVELTY = /albert|bad news|bahh|bells|boing|bubbles|cellos|deranged|good news|hysterical|jester|organ|pipe|trinoids|whisper|zarvox|superstar|wobble|fred|junior|ralph|kathy|princess|agnes|eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley|espeak|robot/i;
+  function voiceScore(v) {
+    var n = v.name || '', lang = (v.lang || '').replace('_', '-');
+    if (!/^en/i.test(lang) || NOVELTY.test(n)) return -1;
+    var s = /^en-(US|GB)$/i.test(lang) ? 10 : 5;
+    if (/natural|neural|enhanced|premium/i.test(n)) s += 100;   // (a) natural / enhanced / premium
+    else if (/google (us )?english/i.test(n)) s += 80;          // (b) Google US English
+    else if (/samantha|ava|allison|susan|serena|karen|moira|tessa/i.test(n)) s += 60; // (c) Apple voices
+    else if (/^en-US$/i.test(lang)) s += 40;                    // (d) any other en-US
+    if (/^en-US$/i.test(lang)) s += 3;
+    if (!v.localService) s += 1;
+    return s;
+  }
   function pickVoice() {
-    var vs = synth.getVoices();
-    voice = vs.filter(function (v) { return /^en[-_]US/i.test(v.lang); })[0] ||
-            vs.filter(function (v) { return /^en/i.test(v.lang); })[0] || null;
+    var best = null, bestScore = -1;
+    synth.getVoices().forEach(function (v) {
+      var s = voiceScore(v);
+      if (s > bestScore) { best = v; bestScore = s; }
+    });
+    if (best && best !== voice) {
+      voice = best;
+      if (window.console) console.log('[ABC] speech voice:', voice.name, '(' + voice.lang + ')');
+    }
   }
   function speak() {
     if (!synth || muted) return;
+    var texts = Array.prototype.slice.call(arguments);
     synth.cancel();
-    Array.prototype.forEach.call(arguments, function (text) {
-      var u = new SpeechSynthesisUtterance(text);
-      u.lang = 'en-US'; u.rate = 0.85; u.pitch = 1.2;
-      if (voice) u.voice = voice;
-      synth.speak(u);
-    });
+    clearTimeout(speakTimer);
+    // short gap after cancel() so browsers don't drop or stutter the next utterance
+    speakTimer = setTimeout(function () {
+      if (muted) return;
+      if (!voice) pickVoice();
+      texts.forEach(function (text) {
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'en-US'; u.rate = 0.9; u.pitch = 1.1; u.volume = 1;
+        if (voice) { u.voice = voice; u.lang = voice.lang; }
+        synth.speak(u);
+      });
+    }, 60);
   }
   var muteBtn = $('mute');
   if (synth) {
     pickVoice();
     if (synth.addEventListener) synth.addEventListener('voiceschanged', pickVoice);
+    else synth.onvoiceschanged = pickVoice;
+    // some browsers never fire voiceschanged reliably; poll briefly until voices appear
+    var tries = 0, poll = setInterval(function () {
+      pickVoice();
+      if (synth.getVoices().length || ++tries > 20) clearInterval(poll);
+    }, 250);
     muteBtn.hidden = false;
     muteBtn.addEventListener('click', function () {
       muted = !muted;
       muteBtn.setAttribute('aria-pressed', muted);
       muteBtn.textContent = muted ? '🔇 Sound off' : '🔊 Sound on';
-      if (muted) synth.cancel();
+      if (muted) { clearTimeout(speakTimer); synth.cancel(); }
     });
   }
   function sayLetter(i) { speak(WORDS[i][0] + '!', WORDS[i][0] + ' is for ' + WORDS[i][1]); }
