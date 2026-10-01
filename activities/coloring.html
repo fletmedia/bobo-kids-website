@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coloring Pages | Bo Bo</title>
+  <meta name="description" content="Color Bo Bo, Lucky Ducky, Luna and Hoppy right in your browser, then print your picture!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="act-bg" aria-hidden="true">
+    <span class="cloud" style="--top:10%;--dur:70s;--delay:-10s;--s:1"></span>
+    <span class="cloud" style="--top:45%;--dur:95s;--delay:-55s;--s:.7"></span>
+    <span class="cloud" style="--top:75%;--dur:80s;--delay:-30s;--s:.85"></span>
+    <span class="star" style="--x:8%;--y:25%;--dur:3s;--delay:-.4s"></span>
+    <span class="star" style="--x:90%;--y:18%;--dur:3.6s;--delay:-1.4s"></span>
+    <span class="star" style="--x:75%;--y:68%;--dur:2.8s;--delay:-2s"></span>
+    <span class="star" style="--x:20%;--y:80%;--dur:3.3s;--delay:-.9s"></span>
+    <span class="bubble" style="--x:6%;--size:34px;--dur:11s;--delay:-2s"></span>
+    <span class="bubble" style="--x:30%;--size:20px;--dur:8s;--delay:-6s"></span>
+    <span class="bubble" style="--x:55%;--size:44px;--dur:13s;--delay:-9s"></span>
+    <span class="bubble" style="--x:82%;--size:28px;--dur:9s;--delay:-4s"></span>
+    <span class="bubble" style="--x:95%;--size:18px;--dur:7s;--delay:-1s"></span>
+  </div>
+  <header class="nav">
+    <a class="logo" href="../index.html">🐻 Bo Bo</a>
+    <nav>
+      <a href="../index.html#home">Home</a>
+      <a href="../index.html#friends">Friends</a>
+      <a href="../index.html#videos">Videos</a>
+      <a href="./">Activities</a>
+      <a href="../index.html#about">About</a>
+    </nav>
+  </header>
+
+  <main class="act-main">
+    <a class="act-back" href="./">← Activities</a>
+    <h1 class="act-title">Coloring Pages 🎨</h1>
+    <p class="act-sub no-print">Pick a picture, pick a color, then tap to fill!</p>
+
+    <div class="sheet-tabs no-print" id="tabs" role="group" aria-label="Pictures">
+      <button class="act-btn on" type="button" data-sheet="bobo" aria-pressed="true">🐻 Bo Bo</button>
+      <button class="act-btn" type="button" data-sheet="ducky" aria-pressed="false">🐥 Lucky Ducky</button>
+      <button class="act-btn" type="button" data-sheet="luna" aria-pressed="false">🦋 Luna</button>
+      <button class="act-btn" type="button" data-sheet="hoppy" aria-pressed="false">🐰 Hoppy</button>
+    </div>
+
+    <div class="sheet-card" id="sheets">
+      <!-- Bo Bo -->
+      <svg id="sheet-bobo" viewBox="0 0 400 400" role="img" aria-label="Coloring sheet: Bo Bo the baby bear in a hooded onesie with a star">
+        <rect width="400" height="400" fill="#fff"/>
+        <g stroke="#3b3563" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+          <ellipse class="fill" cx="120" cy="300" rx="26" ry="44" transform="rotate(25 120 300)" fill="#fff"/>
+          <ellipse class="fill" cx="280" cy="300" rx="26" ry="44" transform="rotate(-25 280 300)" fill="#fff"/>
+          <ellipse class="fill" cx="150" cy="374" rx="40" ry="20" fill="#fff"/>
+          <ellipse class="fill" cx="250" cy="374" rx="40" ry="20" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="290" rx="92" ry="80" fill="#fff"/>
+          <polygon class="fill" points="200,253 210,281.2 240,282 216.2,300.3 224.7,329 200,312 175.3,329 183.8,300.3 160,282 190,281.2" fill="#fff"/>
+          <circle class="fill" cx="112" cy="72" r="30" fill="#fff"/>
+          <circle class="fill" cx="288" cy="72" r="30" fill="#fff"/>
+          <circle class="fill" cx="112" cy="74" r="14" fill="#fff"/>
+          <circle class="fill" cx="288" cy="74" r="14" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="140" rx="106" ry="92" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="152" rx="80" ry="66" fill="#fff"/>
+          <circle class="fill" cx="142" cy="172" r="13" fill="#fff"/>
+          <circle class="fill" cx="258" cy="172" r="13" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="180" rx="34" ry="25" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="168" rx="13" ry="9" fill="#fff"/>
+        </g>
+        <circle class="dot" cx="168" cy="140" r="8"/><circle class="dot" cx="232" cy="140" r="8"/>
+        <path class="ln" d="M186 190 Q200 204 214 190"/>
+        <path class="ln" d="M200 177 V188"/>
+      </svg>
+
+      <!-- Lucky Ducky -->
+      <svg id="sheet-ducky" viewBox="0 0 400 400" role="img" aria-label="Coloring sheet: Lucky Ducky the duckling" hidden>
+        <rect width="400" height="400" fill="#fff"/>
+        <g stroke="#3b3563" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+          <circle class="fill" cx="335" cy="65" r="30" fill="#fff"/>
+          <path class="fill" d="M165 355 L140 392 L170 384 L185 392 L205 355 Z" fill="#fff"/>
+          <path class="fill" d="M255 355 L240 392 L268 384 L288 392 L292 355 Z" fill="#fff"/>
+          <path class="fill" d="M335 245 Q385 215 378 265 Q372 295 335 300 Z" fill="#fff"/>
+          <ellipse class="fill" cx="235" cy="285" rx="125" ry="80" fill="#fff"/>
+          <ellipse class="fill" cx="245" cy="290" rx="55" ry="34" transform="rotate(-15 245 290)" fill="#fff"/>
+          <circle class="fill" cx="170" cy="150" r="72" fill="#fff"/>
+          <path class="fill" d="M160 84 Q146 46 180 62 Q172 74 192 82 Z" fill="#fff"/>
+          <path class="fill" d="M108 158 Q66 154 58 172 Q68 192 112 186 Z" fill="#fff"/>
+          <circle class="fill" cx="148" cy="180" r="13" fill="#fff"/>
+        </g>
+        <circle class="dot" cx="150" cy="130" r="9"/>
+        <path class="ln" d="M70 172 H104"/>
+        <path class="ln" d="M335 22 V10 M335 108 V120 M292 65 H280 M378 65 H390 M305 35 L297 27 M365 35 L373 27 M305 95 L297 103 M365 95 L373 103"/>
+      </svg>
+
+      <!-- Luna -->
+      <svg id="sheet-luna" viewBox="0 0 400 400" role="img" aria-label="Coloring sheet: Luna the butterfly" hidden>
+        <rect width="400" height="400" fill="#fff"/>
+        <g stroke="#3b3563" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+          <path class="fill" d="M195 190 C150 60 40 50 45 140 C48 190 140 215 195 200 Z" fill="#fff"/>
+          <path class="fill" d="M205 190 C250 60 360 50 355 140 C352 190 260 215 205 200 Z" fill="#fff"/>
+          <path class="fill" d="M195 205 C140 215 60 230 75 305 C90 360 175 330 195 245 Z" fill="#fff"/>
+          <path class="fill" d="M205 205 C260 215 340 230 325 305 C310 360 225 330 205 245 Z" fill="#fff"/>
+          <circle class="fill" cx="110" cy="125" r="26" fill="#fff"/>
+          <circle class="fill" cx="290" cy="125" r="26" fill="#fff"/>
+          <circle class="fill" cx="125" cy="285" r="22" fill="#fff"/>
+          <circle class="fill" cx="275" cy="285" r="22" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="222" rx="15" ry="72" fill="#fff"/>
+          <circle class="fill" cx="200" cy="135" r="22" fill="#fff"/>
+        </g>
+        <path class="ln" d="M192 118 Q180 75 158 62 M208 118 Q220 75 242 62"/>
+        <circle class="dot" cx="156" cy="60" r="7"/><circle class="dot" cx="244" cy="60" r="7"/>
+        <circle class="dot" cx="192" cy="132" r="4"/><circle class="dot" cx="208" cy="132" r="4"/>
+        <path class="ln" d="M193 143 Q200 150 207 143" style="stroke-width:3"/>
+      </svg>
+
+      <!-- Hoppy -->
+      <svg id="sheet-hoppy" viewBox="0 0 400 400" role="img" aria-label="Coloring sheet: Hoppy the bunny holding a carrot" hidden>
+        <rect width="400" height="400" fill="#fff"/>
+        <g stroke="#3b3563" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+          <ellipse class="fill" cx="150" cy="75" rx="28" ry="66" transform="rotate(-10 150 75)" fill="#fff"/>
+          <ellipse class="fill" cx="250" cy="75" rx="28" ry="66" transform="rotate(10 250 75)" fill="#fff"/>
+          <ellipse class="fill" cx="150" cy="78" rx="12" ry="44" transform="rotate(-10 150 78)" fill="#fff"/>
+          <ellipse class="fill" cx="250" cy="78" rx="12" ry="44" transform="rotate(10 250 78)" fill="#fff"/>
+          <ellipse class="fill" cx="140" cy="378" rx="40" ry="18" fill="#fff"/>
+          <ellipse class="fill" cx="260" cy="378" rx="40" ry="18" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="305" rx="90" ry="76" fill="#fff"/>
+          <ellipse class="fill" cx="188" cy="276" rx="9" ry="17" transform="rotate(-25 188 276)" fill="#fff"/>
+          <ellipse class="fill" cx="212" cy="276" rx="9" ry="17" transform="rotate(25 212 276)" fill="#fff"/>
+          <path class="fill" d="M172 288 Q200 275 228 288 L200 362 Z" fill="#fff"/>
+          <ellipse class="fill" cx="162" cy="296" rx="17" ry="13" fill="#fff"/>
+          <ellipse class="fill" cx="238" cy="296" rx="17" ry="13" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="170" rx="82" ry="70" fill="#fff"/>
+          <circle class="fill" cx="138" cy="192" r="13" fill="#fff"/>
+          <circle class="fill" cx="262" cy="192" r="13" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="196" rx="32" ry="22" fill="#fff"/>
+          <ellipse class="fill" cx="200" cy="184" rx="11" ry="8" fill="#fff"/>
+        </g>
+        <circle class="dot" cx="168" cy="158" r="8"/><circle class="dot" cx="232" cy="158" r="8"/>
+        <path class="ln" d="M200 192 V202 M200 202 Q190 212 180 204 M200 202 Q210 212 220 204"/>
+        <path class="ln" d="M193 316 h14 M196 334 h8" style="stroke-width:3"/>
+      </svg>
+    </div>
+
+    <p class="pick-note no-print" id="note" aria-live="polite">Color: Yellow</p>
+    <div class="palette no-print" id="palette" role="group" aria-label="Colors"></div>
+    <div class="act-bar no-print">
+      <button class="act-btn" id="undo" type="button" disabled>↩️ Undo</button>
+      <button class="act-btn" id="clear" type="button">🧽 Clear</button>
+      <button class="act-btn" id="print" type="button">🖨️ Print</button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Made with love for little learners 💛</p>
+    <a href="../index.html">Back to Bo Bo's World</a>
+  </footer>
+  <script src="coloring.js"></script>
+</body>
+</html>

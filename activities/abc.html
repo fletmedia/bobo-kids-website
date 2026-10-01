@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABC Fun | Bo Bo</title>
+  <meta name="description" content="Learn the alphabet with Bo Bo! Tap a letter to hear it and play Find the Letter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="act-bg" aria-hidden="true">
+    <span class="cloud" style="--top:10%;--dur:70s;--delay:-10s;--s:1"></span>
+    <span class="cloud" style="--top:45%;--dur:95s;--delay:-55s;--s:.7"></span>
+    <span class="cloud" style="--top:75%;--dur:80s;--delay:-30s;--s:.85"></span>
+    <span class="star" style="--x:8%;--y:25%;--dur:3s;--delay:-.4s"></span>
+    <span class="star" style="--x:90%;--y:18%;--dur:3.6s;--delay:-1.4s"></span>
+    <span class="star" style="--x:75%;--y:68%;--dur:2.8s;--delay:-2s"></span>
+    <span class="star" style="--x:20%;--y:80%;--dur:3.3s;--delay:-.9s"></span>
+    <span class="bubble" style="--x:6%;--size:34px;--dur:11s;--delay:-2s"></span>
+    <span class="bubble" style="--x:30%;--size:20px;--dur:8s;--delay:-6s"></span>
+    <span class="bubble" style="--x:55%;--size:44px;--dur:13s;--delay:-9s"></span>
+    <span class="bubble" style="--x:82%;--size:28px;--dur:9s;--delay:-4s"></span>
+    <span class="bubble" style="--x:95%;--size:18px;--dur:7s;--delay:-1s"></span>
+  </div>
+  <header class="nav">
+    <a class="logo" href="../index.html">🐻 Bo Bo</a>
+    <nav>
+      <a href="../index.html#home">Home</a>
+      <a href="../index.html#friends">Friends</a>
+      <a href="../index.html#videos">Videos</a>
+      <a href="./">Activities</a>
+      <a href="../index.html#about">About</a>
+    </nav>
+  </header>
+
+  <main class="act-main">
+    <a class="act-back" href="./">← Activities</a>
+    <h1 class="act-title">ABC Fun 🔤</h1>
+    <div class="act-bar">
+      <button class="act-btn on" id="tab-learn" type="button" aria-pressed="true">📖 Learn</button>
+      <button class="act-btn" id="tab-game" type="button" aria-pressed="false">🎮 Game</button>
+      <button class="act-btn" id="mute" type="button" aria-pressed="false" hidden>🔊 Sound on</button>
+    </div>
+
+    <noscript><p>Please turn on JavaScript to play!</p></noscript>
+
+    <section id="learn" aria-label="Alphabet">
+      <p class="act-sub">Tap a letter!</p>
+      <div class="letter-grid" id="grid"></div>
+    </section>
+
+    <section id="game" class="game" aria-label="Find the letter game" hidden>
+      <p class="game-prompt" id="prompt" aria-live="polite">Find the letter…</p>
+      <button class="act-btn" id="again" type="button">🔊 Say it again</button>
+      <p class="game-score" id="score" aria-live="polite"></p>
+      <div class="opts" id="opts"></div>
+    </section>
+
+    <div class="stage" id="stage" role="dialog" aria-modal="true" aria-label="Letter" hidden>
+      <div class="stage-card">
+        <p class="stage-letter" id="st-letter"></p>
+        <span class="stage-pic" id="st-pic" aria-hidden="true"></span>
+        <p class="stage-word" id="st-word"></p>
+        <div class="stage-ctrls">
+          <button class="act-btn" id="st-prev" type="button" aria-label="Previous letter">◀</button>
+          <button class="act-btn" id="st-say" type="button" aria-label="Say it again">🔊</button>
+          <button class="act-btn" id="st-next" type="button" aria-label="Next letter">▶</button>
+          <button class="act-btn" id="st-close" type="button" aria-label="Close">✖</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Made with love for little learners 💛</p>
+    <a href="../index.html">Back to Bo Bo's World</a>
+  </footer>
+  <script src="abc.js"></script>
+</body>
+</html>
